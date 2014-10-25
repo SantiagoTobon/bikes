@@ -1,0 +1,56 @@
+<%= form_for(@sale) do |f| %>
+<% if @sale.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+  <ul>
+    <% @sale.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p align='center'>Creacion de venta 1/2</p>
+
+<%= f.hidden_field :sellerId, :value => current_user.personId%>
+<%= f.hidden_field :saleDate, :value => Time.now%>
+
+<div class="row">
+  <div class="small-8">
+    <div class="row">
+      <div class="small-3 columns">
+        <label for="right-label" class="right inline">Cliente</label>
+      </div>
+      <div class="small-9 columns">
+        <%= f.collection_select :clientId, @clients, :personId, :dataClients, :required =>true %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="small-8">
+    <div class="row">
+      <div class="small-3 columns">
+        <label for="right-label" class="right inline">Observaciones</label>
+      </div>
+      <div class="small-9 columns">
+        <%= f.text_field :note, :required=>true, :maxlength =>300 %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="small-4 large-centered columns"><%= f.submit "Siguiente", class: "radius button center"%>
+  </div>
+</div>
+
+
+
+
+<% end %>
+
+

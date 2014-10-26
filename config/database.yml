@@ -10,42 +10,24 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-   adapter: mysql2
+  adapter: mysql2
   encoding: utf8
-  reconnect: false
   pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  host:   <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:   <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  username: root
+  password: diegopp
+  host: localhost
 
 development:
   <<: *default
-   adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  host:   <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:   <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  database: bikesis
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  host:   <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:   <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  database: bikesis_test
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -67,12 +49,6 @@ test:
 #
 production:
   <<: *default
-    adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  host:   <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:   <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  database: railsapp
+  username: admin5Z8DgAQ
+  password:  1YwqiQXZCQcs
